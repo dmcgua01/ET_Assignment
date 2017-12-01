@@ -27,6 +27,14 @@ public class TableEntry {
 	}
 	
 	
+	public TableEntry(String[] split) {
+		this.fName = split[0];
+		this.lName = split[1];
+		this.age = Integer.parseInt(split[2]);
+		this.state = split[3];
+	}
+
+
 	/**
 	 * Getter for fName
 	 * 
