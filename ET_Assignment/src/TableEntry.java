@@ -26,6 +26,7 @@ public class TableEntry {
 		
 	}
 	
+	
 	/**
 	 * Getter for fName
 	 * 
