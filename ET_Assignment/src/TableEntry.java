@@ -9,7 +9,7 @@
  * Entries have first_name, last_name, age, state
  *
  */
-public class TableEntry {
+public class TableEntry implements Comparable<TableEntry>{
 
 	private String fName;
 	private String lName;
@@ -72,5 +72,20 @@ public class TableEntry {
 	 */
 	public String getState(){
 		return state;
+	}
+
+
+	/**
+	 * Compares TableEntrys by state alphabetically
+	 */
+	public int compareTo(TableEntry x) {
+		
+		return getState().compareTo(x.getState());
+	}
+	
+	public String toString(){
+		
+		String ret = fName + " " + lName + ", " + state + ", " + Integer.toString(age);
+		return ret;
 	}
 }

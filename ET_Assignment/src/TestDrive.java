@@ -1,8 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-
+import java.util.*;
 /*
  * TestDrive.java
  */
@@ -27,6 +26,7 @@ public class TestDrive {
 		
 		ArrayList<TableEntry> entries30Plus = new ArrayList<TableEntry>();
 		ArrayList<TableEntry> entries29Less = new ArrayList<TableEntry>();
+		int i = 0;
 		
 		/*
 		 * Usage statement
@@ -65,5 +65,12 @@ public class TestDrive {
 		
 		}
 		
+		Collections.sort(entries29Less);
+		Collections.sort(entries30Plus);
+		
+		for(i = 0; i<entries29Less.size(); i++){
+			System.out.println(entries29Less.get(i).toString());
+		}
 	}
+	
 }
