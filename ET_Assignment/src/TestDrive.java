@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -17,8 +18,6 @@ import java.util.*;
  *
  */
 public class TestDrive {
-
-	final String DELIMITER = ",";
 	
 	/**
 	 * @param args - Command line argument, should be a direct link to a csv file
@@ -29,8 +28,6 @@ public class TestDrive {
 		
 		ArrayList<TableEntry> entries30Plus = new ArrayList<TableEntry>();
 		ArrayList<TableEntry> entries29Less = new ArrayList<TableEntry>();
-		int i = 0;
-		String prevState = "ZZ"; //ZZ will trigger an if statement in the printing step
 		
 		/*
 		 * Usage statement
@@ -82,26 +79,32 @@ public class TestDrive {
 		System.out.println("30+ Years Old");
 		System.out.println("----------------------");
 		
-		for(i = 0; i<entries30Plus.size(); i++){
-			if(!prevState.equals(entries30Plus.get(i).getState())){
-				prevState = entries30Plus.get(i).getState();
-				System.out.println("State: " + prevState);
-
-			}
-			System.out.println("Docunment: " + entries30Plus.get(i).toString());
-		}
-		
+		printEntries(entries30Plus);
 		System.out.println();
 		
 		System.out.println("< 30 Years Old");
 		System.out.println("----------------------");
-		for(i = 0; i<entries29Less.size(); i++){
-			if(!prevState.equals(entries29Less.get(i).getState())){
-				prevState = entries29Less.get(i).getState();
-				System.out.println("State: " + prevState);
-			}
-			System.out.println("Docunment: " + entries29Less.get(i).toString());
-		}
+		
+		printEntries(entries29Less);
+		
 	}
 	
+	/**
+	 * Prints the TableEntry lists to stdout 
+	 * according to the assignment's example formatting
+	 * 
+	 * @param pList - An ArrayList of TableEntrys
+	 */
+	private static void printEntries(ArrayList<TableEntry> pList){
+		int i;
+		String prevState = "ZZ"; //ZZ will trigger an if statement in the printing step
+		
+		for(i = 0; i < pList.size(); i++){
+			if(!prevState.equals(pList.get(i).getState())){
+				prevState = pList.get(i).getState();
+				System.out.println("State: " + prevState);
+			}
+			System.out.println("Document: " + pList.get(i).toString());
+		}
+	}
 }
